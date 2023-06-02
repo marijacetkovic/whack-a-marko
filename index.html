@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>whack-a-marko!</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<h1>whack-a-Marko!!</h1>
+	<div class="stats">
+	<div id="scoreDiv">score: 0</div>
+	<div id="timeDiv">time: 60</div>
+	<div id="maxScoreDiv">max Markos<br> whacked: 0</div>
+
+	<div id="playAgain" onclick="restart();">play again</div>
+	</div>
+
+	<div class="container">
+		
+	</div>
+	<script type="text/javascript">
+		const container = document.getElementsByClassName("container")[0];
+		const markoImg = document.createElement("img");
+		const scoreDiv = document.getElementById("scoreDiv");
+		const playAgain = document.getElementById("playAgain");
+		const maxScoreDiv = document.getElementById("maxScoreDiv");
+		const timeDiv = document.getElementById("timeDiv");
+		const markoArray = ["imgs/img1.png", "imgs/img2.png", "imgs/img3.png", "imgs/img4.png", "imgs/img5.png"];
+		let score = 0;
+		let maxScore = 0;
+		let time = 60;
+		markoImg.setAttribute("class","markoImg");
+
+		for (var i = 0; i < 25; i++) {
+			let tile = document.createElement("div");
+			tile.classList.add("tile");
+			container.appendChild(tile);
+		}
+
+		function whackAMarko(div){
+			//if there is a img within the div score up
+			if (div.firstElementChild) {
+			score++;
+			scoreDiv.innerHTML = "score: "+score;
+			//div.style.border = "0.2vw solid green";	
+			}
+
+		}
+
+
+		const tiles = document.getElementsByClassName("tile");
+		const handler = function(){whackAMarko(this);}
+		for (var i = 0; i < tiles.length; i++) {
+			tiles[i].addEventListener("click", handler);
+		}
+
+		function placeRandomMarko(){
+			let rndMarko = Math.floor(Math.random()*markoArray.length);
+			markoImg.setAttribute("src",markoArray[rndMarko]);
+			let randomNumber = Math.floor(Math.random()*tiles.length);
+			tiles[randomNumber].appendChild(markoImg);
+		}
+
+		intervalMarko = setInterval(placeRandomMarko, 700);
+
+		intervalTimer = setInterval(timer,1000)
+
+		function timer(){
+			time--;
+			timeDiv.innerHTML = "time: "+time;
+			if (time==0) {
+				clearInterval(intervalTimer);
+				clearInterval(intervalMarko);
+				if (score>maxScore) {
+					maxScore = score;
+					maxScoreDiv.innerHTML ="max Markos <br>whacked: " +maxScore;
+				}
+				for (var i = 0; i < tiles.length; i++) {
+				tiles[i].removeEventListener("click", handler);
+				}
+				alert("you whacked "+score+" Markos!! goood job!!!!")
+			}
+		}
+
+
+		function restart(){
+			score = 0;
+			time = 60;
+			clearInterval(intervalTimer);
+			clearInterval(intervalMarko);
+			intervalMarko = setInterval(placeRandomMarko, 700);
+			intervalTimer = setInterval(timer,1000);
+			scoreDiv.innerHTML = "score: "+score;
+			timeDiv.innerHTML = "time: "+time;
+			for (var i = 0; i < tiles.length; i++) {
+				tiles[i].addEventListener("click", handler);
+			}
+
+		}
+
+
+	</script>
+</body>
+</html>

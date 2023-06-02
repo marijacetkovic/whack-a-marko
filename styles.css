@@ -1,0 +1,45 @@
+.container{
+	width: 35vw;
+	height: 35vw;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	left: 32vw;
+}
+body{
+	background-color: #06283D;
+	font-family: 'Gloria Hallelujah', cursive;
+	overflow: hidden;
+}
+
+h1{
+	position: relative;
+	left: 33vw;
+	color: skyblue;
+	font-size: 4vw;
+	margin: 0;
+}
+
+.tile{
+	width: 6vw;
+	height: 6vw;
+	margin: 0.1vw;
+	border: 0.2vw solid skyblue;
+	border-radius: 10%;
+
+}
+.markoImg{
+	width: 6vw;
+	height: 6vw;
+	border-radius: 5%;
+
+}
+
+.stats{
+	width: 20vw;
+	position: absolute;
+	color: skyblue;
+	left: 12vw;
+	top: 15vw;
+	font-size: 2vw;
+}
