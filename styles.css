@@ -43,3 +43,42 @@ h1{
 	top: 15vw;
 	font-size: 2vw;
 }
+
+@media (max-width: 600px) {
+	h1{
+		position: relative;
+		font-size: 10vw;
+		left: 18vw;
+	}
+
+	.container {
+	width: 104vw;
+	height: 104vw;
+	display: flex;
+	flex-wrap: wrap;
+	top: 8vw;
+	position: relative;
+	left: 5vw;
+	}
+  .stats {
+  	left: 20vw;
+  	top: 138vw;
+  	font-size: 5vw;
+  	width: 40vw;
+  }
+
+  .tile{
+	width: 20vw;
+	height: 20vw;
+	margin: 0.1vw;
+	border: 0.2vw solid skyblue;
+	border-radius: 10%;
+
+}
+.markoImg{
+	width: 20vw;
+	height: 20vw;
+	border-radius: 5%;
+
+}
+}
