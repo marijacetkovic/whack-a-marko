@@ -58,6 +58,7 @@
 		const handler = function(){whackAMarko(this);}
 		for (var i = 0; i < tiles.length; i++) {
 			tiles[i].addEventListener("click", handler);
+			tiles[i].addEventListener("touchstart", handler);
 		}
 
 		function placeRandomMarko(){
@@ -83,6 +84,8 @@
 				}
 				for (var i = 0; i < tiles.length; i++) {
 				tiles[i].removeEventListener("click", handler);
+				tiles[i].removeEventListener("touchstart", handler);
+
 				}
 				alert("you whacked "+score+" Markos!! goood job!!!!")
 			}
@@ -100,6 +103,8 @@
 			timeDiv.innerHTML = "time: "+time;
 			for (var i = 0; i < tiles.length; i++) {
 				tiles[i].addEventListener("click", handler);
+				tiles[i].addEventListener("touchstart", handler);
+
 			}
 
 		}
